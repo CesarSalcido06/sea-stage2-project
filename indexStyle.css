@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+    font-family: "Bodoni Moda", serif;
+}
+
+body{
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: "Bodoni Moda", serif;
+    background-color: #FAF9F6;
+    background-size: cover;
+    background-position: center;
+    background-image: url(background.png);
+}
+
+a{
+    font-size: 45px;
+    padding-left: 20px;
+    float: right;
+    padding-top: 45px;
+    text-decoration: none;
+    margin: 0;
+    font-family: "Bodoni Moda";
+    font-weight: 700;
+    color: black; 
+}   
+
+a:hover {
+    color: #0d868f;
+}
+
+header{
+    margin: 0;
+    position: relative;
+    padding: 0 2rem;
+    justify-content: space-between;
+   
+}
+
+ .logo{
+    color: black;
+    margin: 0;
+    font-size: 55px;
+    padding-left: 20px;
+    float: left;
+    padding-top: 20px;
+    
+ }
