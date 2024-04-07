@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   
     font-family: "Bodoni Moda", serif;
 }
 
@@ -11,7 +10,6 @@ body{
     margin: 0;
     padding: 0;
     font-family: "Bodoni Moda", serif;
-    background-color: #FAF9F6;
     background-size: cover;
     background-position: center;
     background-image: url(background.png);
@@ -19,9 +17,7 @@ body{
 
 a{
     font-size: 45px;
-    padding-left: 20px;
     float: right;
-    padding-top: 45px;
     text-decoration: none;
     margin: 0;
     font-family: "Bodoni Moda";
@@ -44,9 +40,25 @@ header{
  .logo{
     color: black;
     margin: 0;
-    font-size: 55px;
+    font-size: 25px;
     padding-left: 20px;
     float: left;
     padding-top: 20px;
     
+ }
+ .content{
+    font-size: 25px;
+    text-align: left;
+    position: fixed;
+    top: 400px;
+    left: 60px;
+
+ }
+
+ .content .cn{
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 500%;
+    padding: 10px;
  }
