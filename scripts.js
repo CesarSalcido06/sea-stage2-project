@@ -25,6 +25,7 @@
 
 
 const skincareProducts = {
+    //start of cleansers
     cleansers: {
         ceraveFomaingCl: {
             name: "Cerave Foaming Facial Cleanser",
@@ -127,8 +128,9 @@ const skincareProducts = {
             image: "skinceuticalsCl.png", // Image URL
         },
     },
+    //start of exfoliators
     exfoliators: {
-        ceraveRenewingSA: {
+        ceraveRenewingEx: {
             name: "Cerave Renewing SA Cleanser",
             price: "$15",
             type: "Chemical exfoliator",
@@ -138,7 +140,7 @@ const skincareProducts = {
             description: "Cerave Renewing SA Cleanser is a gentle exfoliating cleanser formulated with salicylic acid, hyaluronic acid, and niacinamide. It provides gentle exfoliation paired with skin barrier support, suitable for most skin types.",
             image: "ceraveEx.png",
         },
-        dermalogicaDailyMicrofoliant: {
+        dermalogicaEx: {
             name: "Dermalogica Daily Microfoliant",
             price: "$50",
             type: "Physical and chemical exfoliator",
