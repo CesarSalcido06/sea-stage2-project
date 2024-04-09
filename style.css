@@ -86,6 +86,75 @@ button {
     margin: 5px;
 }
 
+.hidden {
+    display: none;
+}
+
+toggle-description-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.toggle-description-btn:hover {
+    background-color: #0056b3;
+}
+/* Style the search container */
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the search input */
+#search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+
+/* Style the dropdown button */
+.dropbtn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+/* Style dropdown items */
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown items on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown content when the button is clicked */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
 @media screen and (max-width: 1000px) {
     .card {
         width: calc(50% - 10px); /* Set width for two cards in a row on smaller screens */

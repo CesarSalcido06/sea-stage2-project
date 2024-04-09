@@ -22,6 +22,21 @@
         <!-- Main title -->
         <h1 class="title">Skincare Products Catalog</h1>
     </header>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search...">
+        <div class="dropdown">
+          <button class="dropbtn">All Categories</button>
+          <div class="dropdown-content">
+            <a href="#">Cleansers</a>
+            <a href="#">Exfoliators</a>
+            <a href="#">Toners</a>
+            <a href="#">Moisturizer</a>
+            <!-- Add more categories as needed -->
+          </div>
+        </div>
+        <button class="search-button">Search</button>
+      </div>
 
     <!-- Container for cards -->
     <div id="card-container">
@@ -41,20 +56,13 @@
             <p><strong>Ingredients:</strong> Shea Butter, Hyaluronic Acid, Vitamin E</p>
             <p><strong>Size:</strong> 50ml</p>
             <p><strong>Skin Type:</strong> Normal to Dry Skin</p>
-            <p><strong>Description:</strong> A lightweight moisturizer that provides long-lasting hydration without clogging pores.</p>
+            <p><button class="toggle-description-btn">Show Description</button></p>
+            <p><strong>Description:</strong> A lightweight moisturizer that provides long-lasting hydration without clogging pores.</p> 
         </div>
     </div>
-    
     <!-- Footer section -->
     <div class="footer">
-        <!-- Button to trigger quote alert function -->
-        <button onclick="quoteAlert();">
-            Get A Quote!
-        </button>
-        <!-- Button to trigger remove last card function -->
-        <button onclick="removeLastCard();">
-            Remove A Card!
-        </button>
+        
     </div>
 </body>
 
