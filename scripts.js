@@ -1,29 +1,3 @@
-/**
- * Data Catalog Project Starter Code - SEA Stage 2
- *
- * This file is where you should be doing most of your work. You should
- * also make changes to the HTML and CSS files, but we want you to prioritize
- * demonstrating your understanding of data structures, and you'll do that
- * with the JavaScript code you write in this file.
- * 
- * The comments in this file are only to help you learn how the starter code
- * works. The instructions for the project are in the README. That said, here
- * are the three things you should do first to learn about the starter code:
- * - 1 - Change something small in index.html or style.css, then reload your 
- *    browser and make sure you can see that change. 
- * - 2 - On your browser, right click anywhere on the page and select
- *    "Inspect" to open the browser developer tools. Then, go to the "console"
- *    tab in the new window that opened up. This console is where you will see
- *    JavaScript errors and logs, which is extremely helpful for debugging.
- *    (These instructions assume you're using Chrome, opening developer tools
- *    may be different on other browsers. We suggest using Chrome.)
- * - 3 - Add another string to the titles array a few lines down. Reload your
- *    browser and observe what happens. You should see a fourth "card" appear
- *    with the string you added to the array, but a broken image.
- * 
- */
-
-
 const skincareProducts = {
     //start of cleansers
     cleansers: {
@@ -418,27 +392,76 @@ const skincareProducts = {
     }
 };
 
-// This function adds cards to the page to display the skincare products
-function showCards() {
+// Function to display product cards based on category, search query, and sort order
+function showCards(category, searchQuery, sortOrder) {
     const cardContainer = document.getElementById("card-container");
     cardContainer.innerHTML = "";
     const templateCard = document.querySelector(".card");
-    
-    // Loop through each category of skincare products
-    for (const category in skincareProducts) {
-        console.log("Category:", category);
-        // Loop through each product within the category
-        for (const productName in skincareProducts[category]) {
-            console.log("Product Name:", productName);
-            const product = skincareProducts[category][productName];
-            const nextCard = templateCard.cloneNode(true); // Copy the template card
-            editCardContent(nextCard, product); // Edit content with product details
-            cardContainer.appendChild(nextCard); // Add new card to the container
+
+    const allProducts = [];
+
+    // Collect all products across categories
+    for (const categoryName in skincareProducts) {
+        const products = Object.values(skincareProducts[categoryName]);
+        allProducts.push(...products);
+    }
+
+    // Filtering products by category
+    const filteredProducts = allProducts.filter(product => {
+        const productCategory = getCategoryName(product);
+        return !category || productCategory === category || category === "All Categories";
+    });
+
+    // Sorting filtered products based on price and sortOrder
+    let sortedProducts;
+    if (sortOrder === "lowToHigh") {
+        sortedProducts = filteredProducts.sort((a, b) => {
+            const priceA = Number(a.price.replace(/\D/g, ""));
+            const priceB = Number(b.price.replace(/\D/g, ""));
+            return priceA - priceB;
+        });
+    } else if (sortOrder === "highToLow") {
+        sortedProducts = filteredProducts.sort((a, b) => {
+            const priceA = Number(a.price.replace(/\D/g, ""));
+            const priceB = Number(b.price.replace(/\D/g, ""));
+            return priceB - priceA;
+        });
+    } else {
+        // Default order
+        sortedProducts = filteredProducts;
+    }
+
+    // Rendering sorted products
+    for (const product of sortedProducts) {
+        if (!searchQuery || product.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+            const nextCard = templateCard.cloneNode(true);
+            editCardContent(nextCard, product);
+            cardContainer.appendChild(nextCard);
         }
     }
 }
 
-// This function edits the content of a card with the details of a skincare product
+// Function to initialize the page with default settings
+function initializePage() {
+    const defaultCategory = "All Categories";
+    const defaultSearchQuery = "";
+    const defaultSortOrder = "Default";
+    showCards(defaultCategory, defaultSearchQuery, defaultSortOrder);
+}
+
+// Function to handle price selection
+function handlePriceSelection() {
+    const categoryDropdown = document.getElementById("category-dropdown");
+    const selectedCategory = categoryDropdown.value;
+    const searchInput = document.getElementById("search-input");
+    const searchQuery = searchInput.value.trim();
+    const priceSelector = document.getElementById("price-select");
+    const selectedPrice = priceSelector.value;
+    
+    showCards(selectedCategory, searchQuery, selectedPrice); // Pass selectedPrice to showCards
+}
+
+// Function to edit card content based on product details
 function editCardContent(card, product) {
     card.style.display = "block";
     const cardHeader = card.querySelector("h2");
@@ -459,10 +482,10 @@ function editCardContent(card, product) {
         <p class="description hidden"><strong>Description:</strong> ${product.description}</p>
     `;
 
-    // Add event listener to the button
     const toggleButton = cardContent.querySelector(".toggle-description-btn");
     const description = cardContent.querySelector(".description");
     
+    // Toggle description visibility
     toggleButton.addEventListener("click", function() {
         description.classList.toggle("hidden");
         if (description.classList.contains("hidden")) {
@@ -473,5 +496,50 @@ function editCardContent(card, product) {
     });
 }
 
-// This calls the showCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+// Function to handle category selection
+function handleCategorySelection() {
+    const categoryDropdown = document.getElementById("category-dropdown");
+    const selectedCategory = categoryDropdown.value;
+    const searchInput = document.getElementById("search-input");
+    const priceSelector = document.getElementById("price-select");
+    
+    // Reset price select to default value when category changes
+    priceSelector.value = "Default";
+    
+    if (searchInput.value !== "") {
+        searchInput.value = ""; // Clear search input
+        showCards(selectedCategory); // Show cards based on selected category
+    } else {
+        showCards(selectedCategory); // Show cards based on selected category
+    }
+}
+
+// Function to get the category name of a product
+function getCategoryName(product) {
+    for (const categoryName in skincareProducts) {
+        if (Object.values(skincareProducts[categoryName]).includes(product)) {
+            return categoryName;
+        }
+    }
+    return null;
+}
+
+// Function to handle search input
+function handleSearchInput() {
+    const searchInput = document.getElementById("search-input");
+    const searchQuery = searchInput.value.trim();
+    const categoryDropdown = document.getElementById("category-dropdown");
+    const selectedCategory = categoryDropdown.value;
+    const priceSelector = document.getElementById("price-select");
+    const selectedPrice = priceSelector.value; // Preserve selected price sorting option
+    
+    showCards(selectedCategory, searchQuery, selectedPrice); // Pass selectedPrice to showCards
+}
+
+// Event listener to initialize page and handle user interactions
+document.addEventListener("DOMContentLoaded", function() {
+    initializePage();
+    document.getElementById("category-dropdown").addEventListener("change", handleCategorySelection);
+    document.getElementById("search-input").addEventListener("input", handleSearchInput);
+    document.getElementById("price-select").addEventListener("change", handlePriceSelection);
+});

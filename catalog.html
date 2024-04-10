@@ -19,30 +19,37 @@
 <body>
     <!-- Header section -->
     <header class="main-header">
-        <!-- Main title -->
-        <h1 class="title">Skincare Products Catalog</h1>
+    <!-- Main title -->
+    <h1 class="title">Skincare Products Catalog</h1>
     </header>
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" id="search-input" placeholder="Search...">
-        <div class="dropdown">
-          <button class="dropbtn">All Categories</button>
-          <div class="dropdown-content">
-            <a href="#">Cleansers</a>
-            <a href="#">Exfoliators</a>
-            <a href="#">Toners</a>
-            <a href="#">Moisturizer</a>
-            <!-- Add more categories as needed -->
-          </div>
+    <!-- Container for search bar and category selector -->
+    <div class="filter-container">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search...">
         </div>
-        <button class="search-button">Search</button>
-      </div>
-
+        <div class="price-selector">
+        <select id="price-select">
+            <option value="Default">Select Price...</option>
+            <option value="lowToHigh">Low to High</option>
+            <option value="highToLow">High to Low</option>
+        </select>
+        </div>
+        <!-- Category Selector -->
+        <div class="category-selector">
+            <select id="category-dropdown">
+                <option value="All Categories">All Categories</option>
+                <option value="cleansers">Cleansers</option>
+                <option value="exfoliators">Exfoliators</option>
+                <option value="toners">Toners</option>
+                <option value="moisturizers">Moisturizers</option>
+            </select>
+        </div>
+    </div>
+    
     <!-- Container for cards -->
     <div id="card-container">
-        <!-- Cards will be dynamically inserted here -->
     </div>
-
     <!-- Template for a card -->
     <div class="card" style="display: none;">
         <div class="card-content">

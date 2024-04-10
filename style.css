@@ -1,13 +1,29 @@
+/* Resetting default margin and padding */
+body,
+h1,
+h2,
+p,
+.button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Setting box-sizing to border-box for easier layout */
+* {
+    box-sizing: border-box;
+}
+
+/* Body styles */
 body {
     margin: 0;
     padding: 0;
-    background-color: antiquewhite;
-    
-    font-family: "Bodoni Moda", serif;
+    background-color: white;
+    font-family: "Roboto", sans-serif; /* Change font to Roboto */
     font-optical-sizing: auto;
     font-weight: 700;
 }
 
+/* Header styles */
 .main-header {
     background-color: rgba(0, 0, 0, .3);
     padding-bottom: 10px;
@@ -19,21 +35,51 @@ body {
     font-size: 8em;
     font-family: "Bodoni Moda";
     font-weight: normal;
-    color: #3B343C; 
+    color: #3B343C;
     text-shadow: 
-    1px 1px 1px #919191,
-    1px 2px 1px #919191,
-    1px 3px 1px #919191,
-    1px 4px 1px #919191,
-    1px 5px 1px #919191,
-    1px 6px 1px #919191,
-    1px 7px 1px #919191,
-    1px 8px 1px #919191,
-    1px 9px 1px #919191,
-    1px 10px 1px #919191;
-
+        1px 1px  1px #919191,
+        1px 2px  1px #919191,
+        1px 3px  1px #919191,
+        1px 4px  1px #919191,
+        1px 5px  1px #919191,
+        1px 6px  1px #919191,
+        1px 7px  1px #919191,
+        1px 8px  1px #919191,
+        1px 9px  1px #919191,
+        1px 10px 1px #919191;
 }
 
+/* Container for search bar and category selector */
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Search bar styles */
+.search-bar {
+    flex: 1; /* Take up remaining space */
+}
+
+#search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%; /* Make the search input full-width */
+}
+
+/* Category selector styles */
+.category-selector select {
+    padding: 10px;
+    border: 1px solid black; /* Add black border */
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%; /* Make the select element full-width */
+}
+
+/* Card container styles */
 #card-container {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping */
@@ -42,8 +88,8 @@ body {
 }
 
 .card {
-    width: calc(25% - 10px); /* Set width for four cards in a row */
-    border: 1px solid #ccc;
+    width: 23%; /* Set width for four cards in a row */
+    border: 1px solid black; /* Add black border */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin: 5px;
@@ -51,13 +97,14 @@ body {
 
 .card-content {
     padding: 20px;
-    font-family: "Bodoni Moda";
+    font-family: "Roboto", sans-serif; /* Change font to Roboto */
     color: #000000;
+    font-size: xx-large;
 }
 
 .card-content h2 {
     margin-top: 0;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .card img {
@@ -65,13 +112,16 @@ body {
     height: auto;
 }
 
+/* Footer styles */
 .footer {
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 0, .3);
     padding: 10px;
+    border: 1px solid black; /* Add black border */
 }
 
+/* Button styles */
 button {
     text-align: center;
     background-color: #3B343C;
@@ -90,7 +140,17 @@ button {
     display: none;
 }
 
-toggle-description-btn {
+.price-selector select {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%;
+    margin-right: 10px; /* Add margin to separate it from the category selector */
+}
+
+.toggle-description-btn {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -103,61 +163,11 @@ toggle-description-btn {
 .toggle-description-btn:hover {
     background-color: #0056b3;
 }
-/* Style the search container */
-.search-container {
-    position: relative;
-    display: inline-block;
-}
 
-/* Style the search input */
-#search-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 200px;
-}
-
-/* Style the dropdown button */
-.dropbtn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-/* Style the dropdown content (hidden by default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    z-index: 1;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    border-radius: 5px;
-}
-
-/* Style dropdown items */
-.dropdown-content a {
-    color: black;
-    padding: 10px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown items on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-/* Show the dropdown content when the button is clicked */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+/* Media queries for responsive design */
 @media screen and (max-width: 1000px) {
     .card {
-        width: calc(50% - 10px); /* Set width for two cards in a row on smaller screens */
+        width: 48%; /* Set width for two cards in a row on smaller screens */
     }
 }
 
